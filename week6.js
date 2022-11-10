@@ -86,7 +86,9 @@ return suits.flatMap(suit => {
     });
 });
 }
-//The game behings here by starting with a fresh deck and then shuffling
+
+//The game begings here by starting with a fresh deck and then shuffling
+
 startWar()
 function startWar() {
     const deck = freshDeck()
