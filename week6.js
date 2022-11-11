@@ -11,8 +11,8 @@ May the odds be ever in your favor!`;
 
 const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
 const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
-const player1Cards = [];
-const player2Cards = [];
+const player1Hand= [];
+const player2Hand = [];
 
 const cardValue = {
   'Ace': 1,
@@ -146,7 +146,7 @@ function startWar() {
       console.log("Player 2 gets the point!");
       console.log("Player 1 Score: " + player1Score);
       console.log("Player 2 Score: " + player2Score);
-    } else { (player2CardValue + player2Cards === player1CardValue + player1Cards)
+    } else {  
       console.log("Draw! No points for this round");
     }
   }

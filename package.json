@@ -1,0 +1,23 @@
+{
+  "name": "my-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "week6.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcivory18/Repository-for-Week-6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcivory18/Repository-for-Week-6/issues"
+  },
+  "homepage": "https://github.com/gcivory18/Repository-for-Week-6#readme",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0"
+  }
+}
