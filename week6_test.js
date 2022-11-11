@@ -8,12 +8,15 @@ describe('CardShuffle', function() {
         it('should iterate through the deck to create a new array of shuffled cards', function() {
             var x = shuffle(arr1);
             expect(x).to.have.different.order(arr2);
-            //if the arrays should have a different order if the shuffle function worked
+            //the arrays should have a different order if the shuffle function worked
         });
         it('should throw an error if the arrays are in the same order', function(){
             expect(function() {
-                shuffle(arr1).to.equal(arr2);
+                shuffle(arr1).to.eql(arr2);
             }).to.throw(Error);
-        })
+        });
     });
 });
+
+
+
