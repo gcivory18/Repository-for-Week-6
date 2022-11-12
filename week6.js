@@ -80,9 +80,9 @@ class Deck {
 //the card consists of a value and a suit
 
 function freshDeck() {
-  return suits.flatMap(suit => {
-    return values.map(value => {
-      return new Card(suit, value)
+  return suits.flatMap(suits => {
+    return values.map(values => {
+      return new Card(suits, values)
     });
   });
 }
@@ -181,3 +181,5 @@ dealCards();
 //tried deleting player1Cards and player2Cards from the if statement but this messed up the code
 //tried adding player1Hand.deck[i].value > player2Hand.deck[i].value to see what that would do - it also messed up the code
 //re-wrote a lot of this section over and over but finally got it to run the game in the browser
+//I had a lot of trouble this week but definitely gave it my all, with over 10 hours of troubleshooting and researching
+//I am excited to keep learning and building. This was a challenge but I really enjoyed working through it!!
