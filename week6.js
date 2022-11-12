@@ -9,10 +9,8 @@ May the odds be ever in your favor!`;
 //created arrays for these variables to hold card values, suits and cards in the deck.
 //created variables for the players cards
 
-const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
-const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
-const player1Hand= [];
-const player2Hand = [];
+const values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+const suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
 
 const cardValue = {
   'Ace': 1,
@@ -56,10 +54,11 @@ class Deck {
     return this.cards.length;
   }
 
+//removes the last element in the array
   pop() {
     return this.cards.shift();
   }
-
+//adds cards to the end of the array
   push(card) {
     this.cards.push(card);
   }
@@ -78,11 +77,12 @@ class Deck {
 }
 
 //returns the shuffled cards to create a new deck
+//the card consists of a value and a suit
 
 function freshDeck() {
-  return suits.flatMap((suit) => {
-    return values.map((value) => {
-      return new Card(suit, value);
+  return suits.flatMap(suit => {
+    return values.map(value => {
+      return new Card(suit, value)
     });
   });
 }
@@ -106,7 +106,7 @@ function startWar() {
   console.log(player2Cards);
 
   // --------- Dealing the Cards --------
-  //Each Player gets half of the shuffled deck
+  //Each Player gets half of the shuffled deck (26 cards)
 
   function dealCards() {
     for (let i = 0; i < Deck.length; i++) {
@@ -117,37 +117,39 @@ function startWar() {
       }
     }
   }
+dealCards();
 
   // ------- Rounds of Play --------
   // Each player takes a turn to draw a card, whichever player has the higher value card wins the point
+  // If there is a tie no points are given and the game moves to the next round
 
-  let player1Score = 0;
+  let player1Score = 0; //start at 0 so they can increase each time they are awarded a point
   let player2Score = 0;
-  let player1 = new Player(player1Cards);
-  let player2 = new Player(player2Cards);
+  let player1Hand = new Player(player1Cards);
+  let player2Hand = new Player(player2Cards);
 
-  for (let i = 0; i < player1.deck.length; i++) {
+  for (let i = 0; i < player1Hand.deck.length; i++) {
 
-    player1Cards = player1.deck[i].suit;
-    player1CardValue = player1.deck[i].value;
-    console.log("1: " + player1Cards + " " + player1CardValue);
+    player1Cards = player1Hand.deck[i].suit;
+    player1CardValue = player1Hand.deck[i].value;
+    console.log("1: " + player1Cards + " " + player1CardValue); //prints player 1's card suit and value to console
 
-    player2Cards = player2.deck[i].suit;
-    player2CardValue = player2.deck[i].value;
-    console.log("2: " + player2Cards + " " + player2CardValue);
+    player2Cards = player2Hand.deck[i].suit;
+    player2CardValue = player2Hand.deck[i].value;
+    console.log("2: " + player2Cards + " " + player2CardValue); //prints player 2's card suit and value to console
 
-    if (player1CardValue + player1Cards > player2CardValue + player2Cards) {
+    if (player1CardValue + player1Cards > player2CardValue + player2Cards) { //if player 1's card value is > Player 2's then they are awarded the point
       player1Score++;
-      console.log("Player 1 gets the point!");
-      console.log("Player 1 Score: " + player1Score);
+      console.log("Player 1 gets the point!"); //prints player 1 gets the point
+      console.log("Player 1 Score: " + player1Score); //prints the players scores after each round
       console.log("Player 2 Score: " + player2Score);
-    } else if (player2CardValue + player2Cards > player1CardValue + player1Cards) {
+    } else if (player2CardValue + player2Cards > player1CardValue + player1Cards) { //if player 2's card is > Player 1's then they are awarded the point
       player2Score++;
-      console.log("Player 2 gets the point!");
-      console.log("Player 1 Score: " + player1Score);
+      console.log("Player 2 gets the point!"); //prints player 1 gets the point
+      console.log("Player 1 Score: " + player1Score); //prints the players scores after each round
       console.log("Player 2 Score: " + player2Score);
     } else {  
-      console.log("Draw! No points for this round");
+      console.log("Draw! No points for this round"); //if the values are equal then no points are added
     }
   }
  
@@ -165,10 +167,17 @@ function startWar() {
     alert(
       `Nicely done, Player 2!
             You destroyed Player 1 with a score of: ${player2Score}!
-            Player 2, you had a score of: ${player1Score}.
+            Player 1, you had a score of: ${player1Score}.
             Play again for redemption against Player 2!`
     );
   } else {
     alert(`WHAT?? A TIE? Unnacceptable! Play again to declare a true winner!`);
   }
 }
+
+//rounds of play was by far the hardest section for me
+//did a lot of troubleshooting in here to get the scores to display in the console and for the game to run with the values and suits
+//played around with a lot of different options and saw what would break the code or change the way it would work in the browser
+//tried deleting player1Cards and player2Cards from the if statement but this messed up the code
+//tried adding player1Hand.deck[i].value > player2Hand.deck[i].value to see what that would do - it also messed up the code
+//re-wrote a lot of this section over and over but finally got it to run the game in the browser
